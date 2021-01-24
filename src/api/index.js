@@ -20,3 +20,14 @@ export async function getSomethingElse(id) {
     throw error;
   }
 }
+
+export async function getSomeInfo(id) {
+  try {
+    console.log(id);
+    const { data } = await axios.get(`/api/geotab/info/${id}`);
+    console.log("device data", data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
