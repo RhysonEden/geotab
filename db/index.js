@@ -8,7 +8,10 @@ const DB_URL =
   process.env.DATABASE_URL ||
   `postgressql://postgres:james@localhost:5432/${DB_NAME}`;
 
-const client = new Client({ DB_URL, ssl: true });
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
 async function createUser({ username, password, email }) {
   try {
