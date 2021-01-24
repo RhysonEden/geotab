@@ -2,16 +2,12 @@ const { Client } = require("pg");
 const bcrypt = require("bcrypt");
 const DB_NAME = "geotab";
 const GeotabApi = require("mg-api-js");
-const string = "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
 
 const DB_URL =
   process.env.DATABASE_URL ||
   `postgressql://postgres:james@localhost:5432/${DB_NAME}`;
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
+const client = new Client(DB_URL);
 
 async function createUser({ username, password, email }) {
   try {
