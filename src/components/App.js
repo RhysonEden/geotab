@@ -12,26 +12,27 @@ const App = () => {
   const [group, setGroup] = useState("");
   const [groupDisplay, setGroupDisplay] = useState([]);
   const [position, setPosition] = useState([]);
-  useEffect(() => {
-    getSomething()
-      .then((response) => {
-        setMessage("Updated Information Loaded");
-        localStorage.setItem("name", JSON.stringify(response));
-        setResp(response);
-      })
-      .catch((error) => {
-        if (error === 500) {
-          console.log("HAAAAH");
-        } else {
-          console.log("error", error);
-          setResp(JSON.parse(localStorage.getItem("name")));
-          setMessage("Setting to Local Database");
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   getSomething()
+  //     .then((response) => {
+  //       setMessage("Updated Information Loaded");
+  //       localStorage.setItem("name", JSON.stringify(response));
+  //       setResp(response);
+  //     })
+  //     .catch((error) => {
+  //       if (error === 500) {
+  //         console.log("HAAAAH");
+  //       } else {
+  //         console.log("error", error);
+  //         setResp(JSON.parse(localStorage.getItem("name")));
+  //         setMessage("Setting to Local Database");
+  //       }
+  //     });
+  // }, []);
 
   const getDevice = (e) => {
     e.preventDefault();
+    console.log(e);
     getSomethingElse(device).then((res) => {
       console.log("results", res);
       setPosition(res);
@@ -42,7 +43,7 @@ const App = () => {
     e.preventDefault();
     getGroupInfo(group).then((response) => {
       console.log(response);
-      // setGroupDisplay(response);
+      setResp(response);
     });
   };
 

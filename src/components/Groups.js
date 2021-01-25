@@ -8,6 +8,16 @@ function Groups({ group, setGroup, getGroup }) {
       value: "b2791",
       id: "Knoxville",
     },
+    { value: "b2792", id: "Nashville" },
+    { value: "b2793", id: "Greensboro" },
+    { value: "b2794", id: "Atlanta" },
+    { value: "b2795", id: "Columbia" },
+    { value: "b2796", id: "Charlotte" },
+    { value: "b2797", id: "Raleigh" },
+    { value: "b2790", id: "SE" },
+    { value: "b2798", id: "Savannah" },
+    { value: "b2799", id: "Birmingham" },
+    { value: "b279A", id: "Pensacola" },
   ];
 
   const set = (e) => {

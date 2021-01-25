@@ -14,7 +14,7 @@ export async function getSomethingElse(id) {
   try {
     console.log(id);
     const { data } = await axios.get(`/api/geotab/${id}`);
-    console.log("device data", data[0].groups[0].id);
+    // console.log("device data", data[0].groups[0].id);
     return data;
   } catch (error) {
     throw error;

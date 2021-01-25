@@ -13,6 +13,8 @@ function Card({
   const changeDeviceNumbers = (e) => {
     e.preventDefault();
     setDevice(e.target.value);
+    console.log("id", e.target.id);
+    console.log("value", e.target.value);
   };
 
   return (
@@ -21,14 +23,14 @@ function Card({
         <option value="1">Select Vehicle From Below</option>
         {resp.map((resp, index) => (
           <option key={resp.id} value={resp.id}>
-            {resp.name}
+            {resp.firstName} {resp.lastName}
           </option>
         ))}
       </select>
       <Link to="/position">
         <button onClick={getDevice}>Submit</button>
       </Link>
-          </div>
+    </div>
   );
 }
 
