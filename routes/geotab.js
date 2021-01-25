@@ -3,25 +3,8 @@ const geoTab = apiRouter.Router();
 require("dotenv").config();
 const GeotabApi = require("mg-api-js");
 
-let databaseInsert = process.env.databaseInsert;
-let userNameInsert = process.env.userNameInsert;
-let passwordInsert = process.env.passwordInsert;
-let pathNameInsert = "https://my.geotab.com";
-let type = "Device";
-let results = 5000;
-
-const authentication = {
-  credentials: {
-    database: databaseInsert,
-    userName: userNameInsert,
-    password: passwordInsert,
-  },
-  path: pathNameInsert,
-};
-
 geoTab.get("/", async (req, res) => {
   try {
-    console.log("test");
     let databaseInsert = process.env.databaseInsert;
     let userNameInsert = process.env.userNameInsert;
     let passwordInsert = process.env.passwordInsert;
@@ -52,7 +35,6 @@ geoTab.get("/", async (req, res) => {
 geoTab.get("/:id", async (req, res) => {
   try {
     const deviceId = req.params.id;
-    console.log("test", req.params.id);
     let databaseInsert = process.env.databaseInsert;
     let userNameInsert = process.env.userNameInsert;
     let passwordInsert = process.env.passwordInsert;
@@ -67,8 +49,6 @@ geoTab.get("/:id", async (req, res) => {
     };
 
     const api = new GeotabApi(authentication);
-
-    console.log("running", deviceId);
 
     let results = await api.call("Get", {
       typeName: "DeviceStatusInfo",
@@ -84,10 +64,10 @@ geoTab.get("/:id", async (req, res) => {
   }
 });
 
-geoTab.get("/:id", async (req, res) => {
+geoTab.get("/info/:group", async (req, res) => {
   try {
-    const deviceId = req.params.id;
-    console.log("test", req.params.id);
+    console.log("group params", req.params.group);
+    const groupId = req.params.group;
     let databaseInsert = process.env.databaseInsert;
     let userNameInsert = process.env.userNameInsert;
     let passwordInsert = process.env.passwordInsert;
@@ -102,6 +82,14 @@ geoTab.get("/:id", async (req, res) => {
     };
 
     const api = new GeotabApi(authentication);
+
+    let results = await api.call("Get", {
+      typeName: "User",
+      search: {
+        companyGroups: [{ id: groupId }],
+      },
+    });
+    res.send(results);
   } catch (err) {
     throw err;
   }

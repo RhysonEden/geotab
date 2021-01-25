@@ -14,18 +14,28 @@ export async function getSomethingElse(id) {
   try {
     console.log(id);
     const { data } = await axios.get(`/api/geotab/${id}`);
-    console.log("device data", data);
+    console.log("device data", data[0].groups[0].id);
     return data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function getSomeInfo(id) {
+// export async function getSomeInfo(id) {
+//   try {
+//     console.log(id);
+//     const { data } = await axios.get(`/api/geotab/info/${id}`);
+//     return data;
+//   } catch (error) {
+//     throw error;
+//   }
+// }
+
+export async function getGroupInfo(group) {
   try {
-    console.log(id);
-    const { data } = await axios.get(`/api/geotab/info/${id}`);
-    console.log("device data", data);
+    console.log("running", group);
+    const { data } = await axios.get(`/api/geotab/info/${group}`);
+    console.log("group data", data);
     return data;
   } catch (error) {
     throw error;

@@ -1,6 +1,15 @@
 import React from "react";
-import Dropdown from "react-dropdown";
-function Card({ resp, device, setDevice, getDevice }) {
+import { BrowserRouter as Brouter, Switch, Link } from "react-router-dom";
+
+function Card({
+  resp,
+  device,
+  setDevice,
+  getDevice,
+  getGroup,
+  groupDisplay,
+  setGroupDisplay,
+}) {
   const changeDeviceNumbers = (e) => {
     e.preventDefault();
     setDevice(e.target.value);
@@ -9,14 +18,17 @@ function Card({ resp, device, setDevice, getDevice }) {
   return (
     <div>
       <select onChange={changeDeviceNumbers}>
+        <option value="1">Select Vehicle From Below</option>
         {resp.map((resp, index) => (
           <option key={resp.id} value={resp.id}>
             {resp.name}
           </option>
         ))}
       </select>
-      <button onClick={getDevice}>Submit</button>
-    </div>
+      <Link to="/position">
+        <button onClick={getDevice}>Submit</button>
+      </Link>
+          </div>
   );
 }
 
