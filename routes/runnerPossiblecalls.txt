@@ -1,0 +1,6 @@
+api.call("Get",{"typeName":"Diagnostic",
+               "resultsLimit":10,
+               "search":{
+               "fromDate":new Date().toISOString()
+            }});
+

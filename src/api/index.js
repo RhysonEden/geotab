@@ -3,39 +3,38 @@ import axios from "axios";
 export async function getSomething() {
   try {
     const { data } = await axios.get("/api/geotab");
-    console.log("Populate List Data", data);
     return data;
   } catch (error) {
     throw error;
   }
 }
 
+//Device Search
 export async function getSomethingElse(id) {
   try {
-    console.log(id);
+    // let id = "b187";
     const { data } = await axios.get(`/api/geotab/${id}`);
-    // console.log("device data", data[0].groups[0].id);
     return data;
   } catch (error) {
     throw error;
   }
 }
 
-// export async function getSomeInfo(id) {
-//   try {
-//     console.log(id);
-//     const { data } = await axios.get(`/api/geotab/info/${id}`);
-//     return data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
+export async function getSomeInfo(driver) {
+  try {
+    const { data } = await axios.get(`api/geotab/info/driver/${driver}`);
+    console.log("123456", data);
+    localStorage.setItem("driver", JSON.stringify(data));
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 
 export async function getGroupInfo(group) {
   try {
-    console.log("running", group);
     const { data } = await axios.get(`/api/geotab/info/${group}`);
-    console.log("group data", data);
+    localStorage.setItem("group", 1);
     return data;
   } catch (error) {
     throw error;

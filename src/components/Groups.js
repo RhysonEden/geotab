@@ -18,6 +18,14 @@ function Groups({ group, setGroup, getGroup }) {
     { value: "b2798", id: "Savannah" },
     { value: "b2799", id: "Birmingham" },
     { value: "b279A", id: "Pensacola" },
+    { value: "b279B", id: "Jacksonville" },
+    { value: "b279C", id: "Sanford" },
+    { value: "b279D", id: "Tampa" },
+    { value: "b279E", id: "Ft. Myers" },
+    { value: "b279F", id: "Ft. Lauderdale" },
+    { value: "b27A0", id: "Tallahassee" },
+    { value: "b27A2", id: "Construction" },
+    { value: "b27A1", id: "Communications" },
   ];
 
   const set = (e) => {

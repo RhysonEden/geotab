@@ -13,23 +13,28 @@ function Card({
   const changeDeviceNumbers = (e) => {
     e.preventDefault();
     setDevice(e.target.value);
-    console.log("id", e.target.id);
-    console.log("value", e.target.value);
   };
 
+  const wipe = (e) => {
+    e.preventDefault();
+    localStorage.clear();
+    window.location.reload();
+  };
   return (
     <div>
       <select onChange={changeDeviceNumbers}>
         <option value="1">Select Vehicle From Below</option>
         {resp.map((resp, index) => (
-          <option key={resp.id} value={resp.id}>
+          // value={resp.id}
+          <option key={resp.id} value={resp.name}>
             {resp.firstName} {resp.lastName}
           </option>
         ))}
       </select>
-      <Link to="/position">
-        <button onClick={getDevice}>Submit</button>
-      </Link>
+      {/* <Link to="/position"> */}
+      <button onClick={getDevice}>Submit</button>
+      <button onClick={wipe}>Reset</button>
+      {/* </Link> */}
     </div>
   );
 }
