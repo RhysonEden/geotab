@@ -40,11 +40,12 @@ async function dropTables() {
 async function createInitialUsers() {
   try {
     console.log("Starting to create users...");
+
     await new Promise((resolve, reject) => {
       console.log("First User");
-      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-        const arman = await createUser({
-          username: "arman",
+      bcrypt.hash("gft2021", SALT_COUNT, async function (err, hashedPassword) {
+        const david = await createUser({
+          username: "david",
           password: hashedPassword,
           email: "test1@yahoo.com",
         });
@@ -55,7 +56,7 @@ async function createInitialUsers() {
 
     await new Promise((resolve, reject) => {
       console.log("Second User");
-      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
+      bcrypt.hash("gft2021", SALT_COUNT, async function (err, hashedPassword) {
         const james = await createUser({
           username: "james",
           password: hashedPassword,
@@ -68,9 +69,9 @@ async function createInitialUsers() {
 
     await new Promise((resolve, reject) => {
       console.log("Third User");
-      bcrypt.hash("bertie99", SALT_COUNT, async function (err, hashedPassword) {
-        const robin = await createUser({
-          username: "robin",
+      bcrypt.hash("gft2021", SALT_COUNT, async function (err, hashedPassword) {
+        const chris = await createUser({
+          username: "chris",
           password: hashedPassword,
           email: "test3@yahoo.com",
         });
@@ -100,14 +101,12 @@ async function testDB() {
     await dropTables();
     await createTables();
     await createInitialUsers();
-    const userArman = await getUserByUsername("arman");
+    const userArman = await getUserByUsername("david");
     const userJames = await getUserByUsername("james");
-    const userRobin = await getUserByUsername("robin");
+    const userRobin = await getUserByUsername("chris");
     const users = await getAllUsers();
     const user1 = await getUsersByID(1);
-    console.log("username", userArman, userJames, userRobin);
     console.log("All users", users);
-    console.log("User #1", user1);
   } catch (error) {
     console.error(error);
   } finally {

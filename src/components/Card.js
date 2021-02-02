@@ -10,30 +10,25 @@ function Card({
   groupDisplay,
   setGroupDisplay,
 }) {
+  let user = localStorage.getItem("user");
   const changeDeviceNumbers = (e) => {
     e.preventDefault();
     setDevice(e.target.value);
   };
 
-  const wipe = (e) => {
-    e.preventDefault();
-    localStorage.clear();
-    window.location.reload();
-  };
   return (
     <div className="header">
-      <select className="select" onChange={changeDeviceNumbers}>
-        <option value="1">Select Vehicle From Below</option>
-        {resp.map((resp, index) => (
-          <option key={resp.id} value={resp.name}>
-            {resp.firstName} {resp.lastName}
-          </option>
-        ))}
-      </select>
-      {/* <Link to="/position"> */}
-      <button onClick={getDevice}>Submit</button>
-      <button onClick={wipe}>Reset</button>
-      {/* </Link> */}
+      <div className="headertwo">
+        <select className="select" onChange={changeDeviceNumbers}>
+          <option value="1">Select Vehicle From Below</option>
+          {resp.map((resp, index) => (
+            <option key={resp.id} value={resp.name}>
+              {resp.firstName} {resp.lastName}
+            </option>
+          ))}
+        </select>
+        <button onClick={getDevice}>Submit</button>
+      </div>
     </div>
   );
 }

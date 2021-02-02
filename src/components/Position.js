@@ -1,7 +1,10 @@
 import React from "react";
 import Gmap from "./Gmap";
+import { useAlert } from "react-alert";
 const { REACT_APP_GOOGLE_KEY } = process.env;
+
 function Position({ position, key }) {
+  const alert = useAlert();
   let driver = JSON.parse(localStorage.getItem("driver"));
   let latitude = position.latitude;
   let longitude = position.longitude;
@@ -11,10 +14,7 @@ function Position({ position, key }) {
         {position.bearing !== 0 && (
           <>
             <p>Driver is {position.isDriving ? "currently" : "not"} driving</p>
-            {/* <p>Latitude = {latitude}</p>
-            <p>Longtitude = {longitude}</p> */}
             <Gmap latitude={latitude} longitude={longitude} />
-            <p>API = {REACT_APP_GOOGLE_KEY}</p>
           </>
         )}
         {position.bearing === 0 && (

@@ -53,36 +53,38 @@ const App = () => {
     e.preventDefault();
     localStorage.removeItem("driver");
     getSomeInfo(device).then((res) => {
-      console.log("getDevice", res);
-      console.log(groupSelect);
+      // console.log("getDevice", res);
+      //       console.log(groupSelect);
       setPosition(res);
       setLat(res.latitude);
       setLon(res.longitude);
-      console.log(lat, lon);
+      // console.log(lat, lon);
     });
   };
 
   const getGroup = (e) => {
     e.preventDefault();
     getGroupInfo(group).then((response) => {
-      console.log("getGroup", response);
+      // console.log("getGroup", response);
       setResp(response);
     });
   };
   return (
     <>
-      <Header
-        key={key}
-        groupSelect={groupSelect}
-        group={group}
-        setGroup={setGroup}
-        resp={resp}
-        device={device}
-        setDevice={setDevice}
-        getDevice={getDevice}
-        getGroup={getGroup}
-        position={position}
-      />
+      <div className="top">
+        <Header
+          key={key}
+          groupSelect={groupSelect}
+          group={group}
+          setGroup={setGroup}
+          resp={resp}
+          device={device}
+          setDevice={setDevice}
+          getDevice={getDevice}
+          getGroup={getGroup}
+          position={position}
+        />
+      </div>
       <div className="main">
         {key === null && <Login />}
         {key !== null && <Position position={position} key={key} />}

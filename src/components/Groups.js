@@ -42,7 +42,7 @@ function Groups({ group, setGroup, getGroup }) {
           </option>
         ))}
       </select>
-      <button onClick={getGroup}>Group</button>
+      <button onClick={getGroup}>Get</button>
     </>
   );
 }
