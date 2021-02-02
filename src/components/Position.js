@@ -1,7 +1,7 @@
 import React from "react";
 import Gmap from "./Gmap";
 const { REACT_APP_GOOGLE_KEY } = process.env;
-function Position({ position }) {
+function Position({ position, key }) {
   let driver = JSON.parse(localStorage.getItem("driver"));
   let latitude = position.latitude;
   let longitude = position.longitude;
@@ -14,7 +14,7 @@ function Position({ position }) {
             {/* <p>Latitude = {latitude}</p>
             <p>Longtitude = {longitude}</p> */}
             <Gmap latitude={latitude} longitude={longitude} />
-            {/* <p>API = {REACT_APP_GOOGLE_KEY}</p> */}
+            <p>API = {REACT_APP_GOOGLE_KEY}</p>
           </>
         )}
         {position.bearing === 0 && (
@@ -25,11 +25,7 @@ function Position({ position }) {
       </>
     );
   } else {
-    return (
-      <>
-        <p> Please select Driver</p>
-      </>
-    );
+    return <div className="App"></div>;
   }
 }
 

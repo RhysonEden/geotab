@@ -34,7 +34,7 @@ function Groups({ group, setGroup, getGroup }) {
 
   return (
     <>
-      <select onChange={set}>
+      <select className="select" onChange={set}>
         <option value="1">Select Group From Below</option>
         {resp.map((resp, index) => (
           <option key={resp.value} value={resp.value}>

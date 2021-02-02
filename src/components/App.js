@@ -14,9 +14,10 @@ import {
   useHistory,
   Route,
 } from "react-router-dom";
-
+import Login from "./Login";
 import Test from "./Test";
 import Groups from "./Groups";
+import Header from "./Header";
 const App = () => {
   const [message, setMessage] = useState([]);
   const [resp, setResp] = useState([]);
@@ -26,6 +27,7 @@ const App = () => {
   const [position, setPosition] = useState([]);
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
+  let key = localStorage.getItem("key");
   let groupSelect = localStorage.getItem("group");
   // useEffect(() => {
   //   getSomething()
@@ -67,28 +69,44 @@ const App = () => {
       setResp(response);
     });
   };
-  if (!groupSelect) {
-    return (
-      <div className="header">
-        <div className="App">
-          <Groups group={group} getGroup={getGroup} setGroup={setGroup} />
-        </div>
+  return (
+    <>
+      <Header
+        key={key}
+        groupSelect={groupSelect}
+        group={group}
+        setGroup={setGroup}
+        resp={resp}
+        device={device}
+        setDevice={setDevice}
+        getDevice={getDevice}
+        getGroup={getGroup}
+        position={position}
+      />
+      <div className="main">
+        {key === null && <Login />}
+        {key !== null && <Position position={position} key={key} />}
       </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <Card
-          resp={resp}
-          device={device}
-          setDevice={setDevice}
-          getDevice={getDevice}
-          getGroup={getGroup}
-        />
-        <Position position={position} />
-      </div>
-    );
-  }
+    </>
+  );
 };
-
 export default App;
+
+{
+  /* <Header
+        key={key}
+        groupSelect={groupSelect}
+        group={group}
+        setGroup={setGroup}
+        resp={resp}
+        device={device}
+        setDevice={setDevice}
+        getDevice={getDevice}
+        getGroup={getGroup}
+        position={position}
+      />
+      <div className="main">
+        {key === null && <Login />}
+        {key !== null && <Position position={position} key={key} />}
+      </div> */
+}

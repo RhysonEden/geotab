@@ -26,6 +26,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.2.1",
     "react": "^16.13.1",
+    "react-alert": "^7.0.2",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.9.1",
     "react-google-maps": "^9.4.5",

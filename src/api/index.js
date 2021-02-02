@@ -40,3 +40,18 @@ export async function getGroupInfo(group) {
     throw error;
   }
 }
+
+export async function loginUser(username, password) {
+  try {
+    const { data } = await axios.post("/api/users/login", {
+      username,
+      password,
+    });
+    localStorage.setItem("key", data.token);
+    localStorage.setItem("user", data.user.username);
+    localStorage.setItem("email", data.user.email);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
