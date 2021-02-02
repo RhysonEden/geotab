@@ -25,7 +25,6 @@ function Card({
       <select className="select" onChange={changeDeviceNumbers}>
         <option value="1">Select Vehicle From Below</option>
         {resp.map((resp, index) => (
-          // value={resp.id}
           <option key={resp.id} value={resp.name}>
             {resp.firstName} {resp.lastName}
           </option>
