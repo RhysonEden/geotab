@@ -15,6 +15,8 @@ const Header = ({
   setDevice,
   getDevice,
   position,
+  userLongitude,
+  userLatitude,
 }) => {
   let key = localStorage.getItem("key");
   let user = localStorage.getItem("user");
@@ -31,7 +33,9 @@ const Header = ({
         <div className="headerthree">GeoTab Location</div>
         <div className="headertwo">Please Login</div>
         <div className="headerfour">
-          <div>Welcome! {user}</div>
+          <div>
+            Welcome! {user} {userLongitude} {userLatitude}{" "}
+          </div>
           <span className="full">
             <Logout />
             <Reset />
@@ -48,7 +52,9 @@ const Header = ({
             <Groups group={group} getGroup={getGroup} setGroup={setGroup} />
           </div>
           <div className="headerfour">
-            <div>Welcome! {user}</div>
+            <div>
+              Welcome! {user} {userLongitude} {userLatitude}{" "}
+            </div>
             <span className="full">
               <Logout />
               <Reset />
@@ -70,7 +76,9 @@ const Header = ({
             />
           </div>
           <div className="headerfour">
-            <div>Welcome! {user}</div>
+            <div>
+              Welcome! {user} {userLongitude} {userLatitude}{" "}
+            </div>
             <span className="full">
               <Logout />
               <Reset />

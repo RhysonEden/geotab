@@ -27,29 +27,32 @@ const App = () => {
   const [position, setPosition] = useState([]);
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
+  const [userLatitude, setUserLatitude] = useState("");
+  const [userLongitude, setUserLongitude] = useState("");
   let key = localStorage.getItem("key");
   let groupSelect = localStorage.getItem("group");
-  // useEffect(() => {
-  //   getSomething()
-  //     .then((response) => {
-  //       // setMessage("Updated Information Loaded");
-  //       // localStorage.setItem("name", JSON.stringify(response));
-  //       console.log(response);
-  //       setResp(response);
-  //     })
-  //     .catch((error) => {
-  //       if (error === 500) {
-  //         console.log("HAAAAH");
-  //       } else {
-  //         console.log("error", error);
-  //         setResp(JSON.parse(localStorage.getItem("name")));
-  //         setMessage("Setting to Local Database");
-  //       }
-  //     });
-  // }, []);
+
+  const componentDidMount = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setUserLatitude(position.coords.latitude);
+      setUserLongitude(position.coords.longitude);
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
+  };
+
+  useEffect(() => {
+    componentDidMount();
+    // .then((response) => {
+    //   setMessage(response.message);
+    // })
+    // .catch((error) => {
+    //   setMessage(error.message);
+    // });
+  });
 
   const getDevice = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     e.preventDefault();
     localStorage.removeItem("driver");
     getSomeInfo(device).then((res) => {
@@ -83,6 +86,8 @@ const App = () => {
           getDevice={getDevice}
           getGroup={getGroup}
           position={position}
+          userLatitude={userLatitude}
+          userLongitude={userLongitude}
         />
       </div>
       <div className="main">

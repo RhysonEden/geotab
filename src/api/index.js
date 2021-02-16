@@ -23,7 +23,7 @@ export async function getSomethingElse(id) {
 export async function getSomeInfo(driver) {
   try {
     const { data } = await axios.get(`api/geotab/info/driver/${driver}`);
-    console.log("123456", data);
+    // console.log("123456", data);
     localStorage.setItem("driver", JSON.stringify(data));
     return data;
   } catch (error) {
@@ -35,6 +35,8 @@ export async function getGroupInfo(group) {
   try {
     const { data } = await axios.get(`/api/geotab/info/${group}`);
     localStorage.setItem("group", 1);
+    console.log("123456", data);
+
     return data;
   } catch (error) {
     throw error;
